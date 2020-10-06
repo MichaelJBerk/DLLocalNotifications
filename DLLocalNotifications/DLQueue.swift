@@ -6,8 +6,8 @@
 //  Copyright © 2018 Devesh Laungani. All rights reserved.
 //
 
-
-@available(iOS 10.0, *)
+import Foundation
+@available(iOS 10.0, macOS 10.15, *)
 public
 class DLQueue: NSObject {
     
@@ -111,11 +111,11 @@ class DLQueue: NSObject {
 
 // Helper function to compare notification types
 
-@available(iOS 10.0, *)
+@available(iOS 10.0, macOS 10.15, *)
 public func <(lhs: DLNotification, rhs: DLNotification) -> Bool {
     return lhs.fireDate?.compare(rhs.fireDate!) == ComparisonResult.orderedAscending
 }
-@available(iOS 10.0, *)
+@available(iOS 10.0, macOS 10.15, *)
 public func ==(lhs: DLNotification, rhs: DLNotification) -> Bool {
     return lhs.identifier == rhs.identifier
 }

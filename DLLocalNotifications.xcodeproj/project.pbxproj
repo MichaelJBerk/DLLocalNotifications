@@ -12,7 +12,6 @@
 		5526CB9C20CDF770000B3E38 /* DLNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526CB9B20CDF770000B3E38 /* DLNotification.swift */; };
 		55EC96C81E01D63900833C1A /* DLLocalNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC96BE1E01D63800833C1A /* DLLocalNotifications.framework */; };
 		55EC96CD1E01D63900833C1A /* DLLocalNotificationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC96CC1E01D63900833C1A /* DLLocalNotificationsTests.swift */; };
-		55EC96CF1E01D63900833C1A /* DLLocalNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 55EC96C11E01D63800833C1A /* DLLocalNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55EC97751E01D8C600833C1A /* DLLocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC97741E01D8C600833C1A /* DLLocalNotifications.swift */; };
 		FAE044B221EBFA1B005D94F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE044B121EBFA1B005D94F9 /* AppDelegate.swift */; };
 		FAE044B421EBFA1B005D94F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE044B321EBFA1B005D94F9 /* ViewController.swift */; };
@@ -43,7 +42,6 @@
 		5526CB9720CDF722000B3E38 /* DLQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLQueue.swift; sourceTree = "<group>"; };
 		5526CB9B20CDF770000B3E38 /* DLNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLNotification.swift; sourceTree = "<group>"; };
 		55EC96BE1E01D63800833C1A /* DLLocalNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DLLocalNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		55EC96C11E01D63800833C1A /* DLLocalNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLLocalNotifications.h; sourceTree = "<group>"; };
 		55EC96C21E01D63800833C1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55EC96C71E01D63900833C1A /* DLLocalNotificationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLLocalNotificationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55EC96CC1E01D63900833C1A /* DLLocalNotificationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLLocalNotificationsTests.swift; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 		55EC96C01E01D63800833C1A /* DLLocalNotifications */ = {
 			isa = PBXGroup;
 			children = (
-				55EC96C11E01D63800833C1A /* DLLocalNotifications.h */,
 				55EC96C21E01D63800833C1A /* Info.plist */,
 				55EC97741E01D8C600833C1A /* DLLocalNotifications.swift */,
 				5526CB9520CDF6FB000B3E38 /* DLCategory.swift */,
@@ -146,7 +143,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55EC96CF1E01D63900833C1A /* DLLocalNotifications.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +215,7 @@
 				TargetAttributes = {
 					55EC96BD1E01D63800833C1A = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 3FNKL5DKHS;
+						DevelopmentTeam = 39SZK2C73D;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
@@ -242,6 +238,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -453,14 +450,16 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3FNKL5DKHS;
+				DEVELOPMENT_TEAM = 39SZK2C73D;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = DLLocalNotifications/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "open-source.DLLocalNotifications";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -476,14 +475,16 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3FNKL5DKHS;
+				DEVELOPMENT_TEAM = 39SZK2C73D;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = DLLocalNotifications/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "open-source.DLLocalNotifications";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

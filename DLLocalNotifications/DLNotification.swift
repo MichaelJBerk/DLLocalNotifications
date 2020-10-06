@@ -10,7 +10,7 @@
 import UserNotifications
 import MapKit
 
-@available(iOS 10.0, *)
+@available(iOS 10.0, macOS 10.15, *)
 public class DLNotification {
     
     // Contains the internal instance of the notification

@@ -11,7 +11,7 @@ import UserNotifications
 
 let MAX_ALLOWED_NOTIFICATIONS = 64
 
-@available(iOS 10.0, *)
+@available(iOS 10.0, macOS 10.15, *)
 public class DLNotificationScheduler {
     
     // Apple allows you to only schedule 64 notifications at a time
@@ -89,10 +89,12 @@ public class DLNotificationScheduler {
                     }
                     
                 }
+				#if !targetEnvironment(macCatalyst) && !os(macOS)
                 if let request3 = request.trigger as? UNLocationNotificationTrigger {
                     
                     print("Location notification: \(request3.region.debugDescription)")
                 }
+				#endif
             }
         })
     
@@ -115,10 +117,12 @@ public class DLNotificationScheduler {
                         print("Calendar notification: \(request2.nextTriggerDate().debugDescription) does not repeat")
                     }
                 }
+				#if !targetEnvironment(macCatalyst) && !os(macOS)
                 if let request3 = request.trigger as? UNLocationNotificationTrigger {
                     
                     print("Location notification: \(request3.region.debugDescription)")
                 }
+				#endif
             }
         })
     }
@@ -183,6 +187,22 @@ public class DLNotificationScheduler {
             
         }
     }
+	func getTrigger(notification: DLNotification) -> UNNotificationTrigger {
+		#if !targetEnvironment(macCatalyst) && !os(macOS)
+		if notification.region != nil {
+			var trigger: UNNotificationTrigger = UNLocationNotificationTrigger(region: notification.region!, repeats: false)
+			if (notification.repeatInterval == .hourly) {
+				trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: (TimeInterval(3600)), repeats: false)
+			}
+			return trigger
+		}
+		#endif
+		var trigger: UNNotificationTrigger = UNCalendarNotificationTrigger(dateMatching: convertToNotificationDateComponent(notification: notification, repeatInterval: notification.repeatInterval), repeats: notification.repeats)
+		if (notification.repeatInterval == .minute) {
+			trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: (TimeInterval(60)), repeats: false)
+		}
+		return trigger
+	}
     
     // Refactored for backwards compatability
     fileprivate func scheduleNotificationInternal ( notification: DLNotification) -> String? {
@@ -191,26 +211,8 @@ public class DLNotificationScheduler {
             return nil
         } else {
             
-            var trigger: UNNotificationTrigger
-            
-            if (notification.region != nil) {
-                trigger = UNLocationNotificationTrigger(region: notification.region!, repeats: false)
-                if (notification.repeatInterval == .hourly) {
-                    trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: (TimeInterval(3600)), repeats: false)
-                    
-                }
-                
-            } else {
-                
-                trigger = UNCalendarNotificationTrigger(dateMatching: convertToNotificationDateComponent(notification: notification, repeatInterval: notification.repeatInterval), repeats: notification.repeats)
-                
-                if (notification.repeatInterval == .minute) {
-                    trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: (TimeInterval(60)), repeats: false)
-                    
-                }
- 
-                
-            }
+            let trigger: UNNotificationTrigger = getTrigger(notification: notification)
+			
             let content = UNMutableNotificationContent()
             
             content.title = notification.alertTitle!
@@ -223,9 +225,9 @@ public class DLNotificationScheduler {
             if (notification.soundName == "1") { content.sound = nil}
             
             if !(notification.attachments == nil) { content.attachments = notification.attachments! }
-            
+			#if !targetEnvironment(macCatalyst) && !os(macOS)
             if !(notification.launchImageName == nil) { content.launchImageName = notification.launchImageName! }
-            
+			#endif
             if !(notification.category == nil) { content.categoryIdentifier = notification.category! }
             
             notification.localNotificationRequest = UNNotificationRequest(identifier: notification.identifier!, content: content, trigger: trigger)

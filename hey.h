@@ -5,9 +5,7 @@
 //  Created by Devesh Laungani on 12/14/16.
 //  Copyright © 2016 Devesh Laungani. All rights reserved.
 //
-
-#import <UIKit/UIKit.h>
-
+#import <Foundation/Foundation.h>
 //! Project version number for DLLocalNotifications.
 FOUNDATION_EXPORT double DLLocalNotificationsVersionNumber;
 

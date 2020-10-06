@@ -10,7 +10,7 @@
 import Foundation
 import UserNotifications
 
-@available(iOS 10.0, *)
+@available(iOS 10.0, macOS 10.15, *)
 public class DLCategory {
 
     // Holds the actions you want available for this category type
